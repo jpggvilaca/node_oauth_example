@@ -1,14 +1,14 @@
 # Sample app with OAuth2, node, express and react
 
 ## Running the project
-* `npm i`
-* `node index.js` -> Express api
-* `npm run start` -> Frontend app
+* Clone the project
+* Install dependencies: `npm i`
+* Server: `node index.js`
+* Frontend`npm run start`
 
 ## Stack
 * Backend:
-  * Express js
-  * Axios
+  * Node (>= 7.5.0) - Express
 * Frontend:
   * Parcel for bundling
   * React for the frontend view layer

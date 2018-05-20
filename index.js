@@ -34,7 +34,7 @@ const generateUserInfoSchema = (tokenType, accessToken) => ({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// To handle CORS 'issues' when testing locally (remove this later)
+// To handle CORS 'issues' when testing locally
 app.use(cors());
 
 // Login user
