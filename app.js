@@ -1,44 +1,58 @@
-import React, { Component, createRef } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
+import { config } from './config';
+import Form from './Form';
+
+import './index.css';
+
 class App extends Component {
-  constructor() {
-    super();
+  state = {
+    message: '',
+    success: false,
+    isLoggedIn: false
+  };
 
-    this.userRef = createRef();
-    this.passRef = createRef();
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  handleSubmit = data => {
+    const { username, password } = data;
 
-  handleSubmit(e) {
-    e.preventDefault();
+    axios.post('http://localhost:3000/login', { username, password })
+      .then(response => {
+        if (response.data.error) {
+          const message = `Error: ${response.data.error_description}`;
 
-    axios.post('http://localhost:3000/register', {
-      username: this.userRef.current.value,
-      password: this.passRef.current.value
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+          this.setState({ message, success: false });
+        } else {
+          const { firstName, lastName } = response.data;
+          const message = `Hi ${firstName} ${lastName}!`;
+
+          this.setState({ isLoggedIn: true, message, success: true });
+        }
+      })
+      .catch(error => {
+        const { statusText } = error.response;
+
+        this.setState({ message: statusText, success: false });
+      });
   }
 
   render() {
+    const { message, success, isLoggedIn } = this.state;
+    const statusClassName = success ? 'success' : '';
+
+    // messsage.length > 5 because even if the username comes empty, we still
+    // have the string 'Hi   ' (5 characters) (FIX THIS)
+
     return (
-      <form method="post" onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input ref={this.userRef} name="username" type="text" className="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input ref={this.passRef} type="password" name="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-        </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      <Fragment>
+        {message.length > 5 && <div className={`message-box ${statusClassName}`}>{message}</div>}
+        {
+          isLoggedIn
+            ? <div>map</div>
+            : <Form onSubmit={this.handleSubmit} />
+        }
+      </Fragment>
     );
   }
 }

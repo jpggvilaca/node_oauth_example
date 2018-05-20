@@ -1,0 +1,38 @@
+* {
+ box-sizing: border-box;
+}
+
+body,
+html,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  margin-top: 40px;
+}
+
+.message-box {
+  align-items: center;
+  background-color: red;
+  color: #fff;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.message-box.success {
+  background-color: green;
+}
