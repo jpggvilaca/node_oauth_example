@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { config } from './config';
 import Form from './Form';
+import ChargePointsMap from './ChargePointsMap';
 
 import './index.css';
 
@@ -40,16 +41,12 @@ class App extends Component {
   render() {
     const { message, success, isLoggedIn } = this.state;
     const statusClassName = success ? 'success' : '';
-
-    // messsage.length > 5 because even if the username comes empty, we still
-    // have the string 'Hi   ' (5 characters) (FIX THIS)
-
     return (
       <Fragment>
-        {message.length > 5 && <div className={`message-box ${statusClassName}`}>{message}</div>}
+        {message.length > 0 && <div className={`message-box ${statusClassName}`}>{message}</div>}
         {
           isLoggedIn
-            ? <div>map</div>
+            ? <ChargePointsMap />
             : <Form onSubmit={this.handleSubmit} />
         }
       </Fragment>
