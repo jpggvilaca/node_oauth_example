@@ -3,12 +3,14 @@
 ## Running the project
 * Clone the project
 * Install dependencies: `npm i`
-* Server: `node index.js`
-* Frontend`npm run start`
+* Start the server: -> `node server.js`
+* Start the frontend app -> `npm run start`
 
 ## Stack
 * Backend:
-  * Node (>= 7.5.0) - Express
+  * Node (>= 7.5.0)
+  * Express JS
 * Frontend:
-  * Parcel for bundling
+  * Webpack for bundling
   * React for the frontend view layer
+  * Bootstrap for styling
