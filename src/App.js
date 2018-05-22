@@ -36,6 +36,10 @@ class App extends Component {
 
         if (error.response && error.response.statusText) {
           statusText = error.response.statusText;
+        } else {
+          statusText = 'Something went wrong...';
+
+          console.warn('Is the webserver running?');
         }
 
         this.setState({ message: statusText, success: false });
@@ -68,7 +72,11 @@ class App extends Component {
 
     return (
       <Fragment>
-        {isLoggedIn ? null : <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>}
+        {
+          !isLoggedIn
+            ? <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+            : null
+        }
 
         {message.length
             ? <div className={`message-box ${statusClassName}`}>{message}</div>
