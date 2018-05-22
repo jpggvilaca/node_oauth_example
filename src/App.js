@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import { config } from './config';
+import { config } from '../config';
 import Form from './components/Form';
 import ChargePointsMap from './components/ChargePointsMap';
 
@@ -63,18 +63,18 @@ class App extends Component {
   }
 
   render() {
-    const { message, success } = this.state;
+    const { message, success, isLoggedIn } = this.state;
     const statusClassName = success ? 'success' : '';
 
     return (
       <Fragment>
-        <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+        {isLoggedIn ? null : <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>}
 
         {message.length
             ? <div className={`message-box ${statusClassName}`}>{message}</div>
             : null
         }
-        
+
         {this.renderContent()}
       </Fragment>
     );

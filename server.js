@@ -5,7 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const qs = require('qs');
-const { config } = require('./src/config');
+const { config } = require('./config');
 
 // Util functions
 const generateLoginSchema = (username, password) => ({

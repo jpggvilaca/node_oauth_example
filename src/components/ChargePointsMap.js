@@ -3,7 +3,7 @@ import { compose, withProps } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import { object, array } from 'prop-types';
 
-import { config } from '../config';
+import { config } from '../../config';
 
 class ChargePointsMap extends Component {
   static defaultProps = {
