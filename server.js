@@ -5,7 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const qs = require('qs');
-const { config } = require('./config');
+const { config } = require('./src/config');
 
 // Util functions
 const generateLoginSchema = (username, password) => ({
@@ -42,31 +42,30 @@ app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const loginRequestSchema = generateLoginSchema(username, password);
 
-  // Get the acess token
-  // axios(loginRequestSchema)
-  //   .then(response => {
-  //     const { token_type, access_token } = response.data;
-  //     const getUserInfoSchema = generateUserInfoSchema(token_type, access_token);
-  //
-  //     // Get the customer info
-  //     axios(getUserInfoSchema)
-  //       .then(response => {
-  //         const { firstName, lastName } = response.data;
-  //
-  //         res.send({ firstName, lastName });
-  //       })
-  //       .catch(err => {
-  //         const { error, error_description } = err.response.data;
-  //
-  //         res.send({ error, error_description })
-  //       })
-  //   })
-  //   .catch(err => {
-  //     const { error, error_description } = err.response.data;
-  //
-  //     res.send({ error, error_description })
-  //   });
-  console.log('cenas');
+  // Get the access token
+  axios(loginRequestSchema)
+    .then(response => {
+      const { token_type, access_token } = response.data;
+      const getUserInfoSchema = generateUserInfoSchema(token_type, access_token);
+
+      // Get the customer info
+      axios(getUserInfoSchema)
+        .then(response => {
+          const { firstName, lastName } = response.data;
+
+          res.send({ firstName, lastName });
+        })
+        .catch(err => {
+          const { error, error_description } = err.response.data;
+
+          res.send({ error, error_description })
+        })
+    })
+    .catch(err => {
+      const { error, error_description } = err.response.data;
+
+      res.send({ error, error_description })
+    });
 });
 
 // Boot up the server

@@ -30,7 +30,9 @@ class ChargePointsMap extends Component {
   render() {
     const { mapProps } = this.props;
 
-    <GoogleMap {...mapProps}>{this.renderMarkers()}</GoogleMap>
+    return (
+      <GoogleMap {...mapProps}>{this.renderMarkers()}</GoogleMap>
+    );
   }
 }
 
@@ -38,7 +40,7 @@ const enhancedComponent = compose(
   withProps({
     googleMapURL: config.googleMapURL,
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `400px`, width: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,

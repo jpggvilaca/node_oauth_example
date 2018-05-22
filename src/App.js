@@ -69,10 +69,12 @@ class App extends Component {
     return (
       <Fragment>
         <h3 className="h3 mb-3 font-weight-normal">Please sign in</h3>
+
         {message.length
             ? <div className={`message-box ${statusClassName}`}>{message}</div>
             : null
         }
+        
         {this.renderContent()}
       </Fragment>
     );
