@@ -3,7 +3,7 @@
 ## Running the project
 * Clone the project
 * Install dependencies: `npm i`
-* Start the server: -> `node server.js`
+* Start the server: -> `npm run server`
 * Start the frontend app -> `npm run start`
 
 ## Stack

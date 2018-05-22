@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open",
+    "server": "node server.js",
     "build": "webpack"
   },
   "repository": {
@@ -45,9 +46,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
+    "prop-types": "^15.6.1",
     "qs": "^6.5.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-google-maps": "^9.4.5"
+    "react-google-maps": "^9.4.5",
+    "recompose": "^0.27.1"
   }
 }
