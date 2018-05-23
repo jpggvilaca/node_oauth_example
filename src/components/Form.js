@@ -1,4 +1,4 @@
-import React, { Fragment, Component, createRef } from 'react';
+import React, { Component, createRef } from 'react';
 import { func } from 'prop-types';
 
 class Form extends Component {
@@ -29,7 +29,8 @@ class Form extends Component {
           id="inputUsername"
           className="form-control"
           placeholder="Username"
-          required autoFocus
+          required
+          autoFocus
         />
         <label htmlFor="inputPassword" className="sr-only">Password</label>
         <input
