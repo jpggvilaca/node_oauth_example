@@ -71,3 +71,8 @@ main {
 .message-box.success {
   background-color: green;
 }
+
+.map-header {
+  margin-bottom: 25px;
+}
+
