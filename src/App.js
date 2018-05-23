@@ -58,7 +58,12 @@ class App extends Component {
       // User successfully logged in, so then we load the map endpoints
       const chargePoints = require('../mock-chargepoints.json');
 
-      result = (<ChargePointsMap mapProps={mapProps} userData={chargePoints} />);
+      result = (
+        <Fragment>
+          <h2 className="map-header">List of chargepoints</h2>
+          <ChargePointsMap mapProps={mapProps} userData={chargePoints} />
+        </Fragment>
+      );
     } else {
       result = <Form onSubmit={this.handleSubmit} />
     }
